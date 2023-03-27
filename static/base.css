@@ -1,0 +1,14 @@
+.JJIT_logo{
+    font-family:'Permanent Marker', cursive;
+}
+.JJIT_footer_button{
+    font-size: .6rem;
+}
+.JJIT_footer{
+    text-align: center;
+    margin-top:2rem;
+}
+.JJIT_header{
+    text-align: center;
+    margin:2rem 0;
+}
