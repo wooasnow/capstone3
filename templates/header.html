@@ -7,11 +7,14 @@
         <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
             <span>login</span>
         </a>
-       <a href="{% url 'accountapp:create' %}?next={{ request.path }}">
+        <a href="{% url 'accountapp:create' %}">
             <span>회원가입</span>
         </a>
 
         {% else %}
+        <span>IT칼럼</span>
+        <span>Project</span>
+        <span>Study</span>
         <a href="{% url 'accountapp:detail' pk=user.pk %}">
             <span>회원정보</span>
         </a>
