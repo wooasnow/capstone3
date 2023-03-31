@@ -1,15 +1,20 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
+from accountapp.decorators import account_decorator
 from accountapp.forms import AccountUpdateForm
 from accountapp.models import HelloWorld
 
-
+has_accountDecorator = [login_required, account_decorator]
 # Create your views here.
+
+@login_required
 def hello_world(request):
     if request.method == 'POST':
 
@@ -44,6 +49,8 @@ class AccountDetailView(DetailView):
     template_name = 'accountapp/detail.html'
 
 
+@method_decorator(has_accountDecorator, 'get')
+@method_decorator(has_accountDecorator, 'post')
 class AccountUpdateView(UpdateView):
     # 장고에서 제공하는 기본 모델
     model = User
@@ -53,9 +60,12 @@ class AccountUpdateView(UpdateView):
     success_url = reverse_lazy('accountapp:hello_world')
     # reverse_lazy는 클래스에서
     template_name = 'accountapp/update.html'
+
     # 어느 html파일로 갈지
 
 
+@method_decorator(has_accountDecorator, 'get')
+@method_decorator(has_accountDecorator, 'post')
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
