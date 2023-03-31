@@ -4,7 +4,7 @@
        <div class="mb-4">
            <h2>회원 탈퇴</h2>
        </div>
-        <form action ="{% url 'accountapp:delete' pk=user.pk %}" method="POST">
+        <form action ="{% url 'accountapp:delete' pk=target_user.pk %}" method="POST">
             {% csrf_token %}
             <input type="submit" class="btn btn-danger col-4 mt-3">
         </form>
