@@ -8,11 +8,11 @@ from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
-from accountapp.decorators import account_decorator
+from accountapp.decorators import account_ownership_required
 from accountapp.forms import AccountUpdateForm
 from accountapp.models import HelloWorld
 
-has_accountDecorator = [login_required, account_decorator]
+has_ownership = [login_required, account_ownership_required]
 
 
 # Create your views here.
@@ -51,8 +51,8 @@ class AccountDetailView(DetailView):
     template_name = 'accountapp/detail.html'
 
 
-@method_decorator(has_accountDecorator, 'get')
-@method_decorator(has_accountDecorator, 'post')
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
 class AccountUpdateView(UpdateView):
     # 장고에서 제공하는 기본 모델
     model = User
@@ -66,8 +66,8 @@ class AccountUpdateView(UpdateView):
     # 어느 html파일로 갈지
 
 
-@method_decorator(has_accountDecorator, 'get')
-@method_decorator(has_accountDecorator, 'post')
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
