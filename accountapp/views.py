@@ -1,7 +1,8 @@
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
@@ -12,6 +13,8 @@ from accountapp.forms import AccountUpdateForm
 from accountapp.models import HelloWorld
 
 has_accountDecorator = [login_required, account_decorator]
+
+
 # Create your views here.
 
 @login_required
@@ -35,7 +38,6 @@ def hello_world(request):
 class AccountCreateView(CreateView):
     # 장고에서 제공하는 기본 모델
     model = User
-
     form_class = UserCreationForm
     success_url = reverse_lazy('accountapp:hello_world')
     # reverse_lazy는 클래스에서
@@ -71,3 +73,20 @@ class AccountDeleteView(DeleteView):
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:login')
     template_name = 'accountapp/delete.html'
+
+    '''def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.object = None
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        # 자바스크립트 confirm 메시지를 띄우고 확인 버튼을 누르면 삭제 수행
+        confirm_message = "회원탈퇴를 진행하시겠습니까?"
+        if request.POST.get('confirm_message') == confirm_message:
+            self.object.delete()
+            return HttpResponse("회원탈퇴가 완료되었습니다.")
+        else:
+            return render(request, self.template_name, {'target_user': self.object})'''
+
+
+
