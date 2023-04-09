@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'profileapp',
     'articleapp',
     'commentapp',
+    'projectapp',
+    'subscribeapp',
 ]
 
 MIDDLEWARE = [
@@ -141,7 +143,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 
 ]
-LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
+LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
 
 

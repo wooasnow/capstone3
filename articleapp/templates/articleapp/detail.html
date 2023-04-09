@@ -10,9 +10,9 @@
             </h3>
             <hr>
             <img style="width:300px; height:200px"src="{{ target_article.image.url}}" alt="">
-            <p>
-                {{ target_article.content }}
-            </p>
+            <div style="text-align:left;">
+                {{ target_article.content | safe }}
+            </div>
             <hr>
             {% if target_article.writer == user %}
             <a href="{% url 'articleapp:update' pk=target_article.pk%}" class="btn btn-success col-3">
