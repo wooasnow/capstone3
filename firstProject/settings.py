@@ -14,7 +14,7 @@ from pathlib import Path
 import environ
 import os
 
-from django.contrib import staticfiles
+from django.contrib import staticfiles, messages
 from django.template.context_processors import media
 from django.urls import reverse_lazy
 
@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'commentapp',
     'projectapp',
     'subscribeapp',
+    'likeapp',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+MESSAGE_TAGS={
+    messages.ERROR:'danger',
+}
 ROOT_URLCONF = 'firstProject.urls'
 
 TEMPLATES = [
