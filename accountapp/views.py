@@ -23,7 +23,7 @@ class AccountCreateView(CreateView):
     # 장고에서 제공하는 기본 모델
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('accountapp:login')
     # reverse_lazy는 클래스에서
     template_name = 'accountapp/create.html'
     # 어느 html파일로 갈지
@@ -49,7 +49,7 @@ class AccountUpdateView(UpdateView):
     context_object_name = 'target_user'
     # 장고에서 제공하는 html
     form_class = AccountUpdateForm
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('accountapp:login')
     # reverse_lazy는 클래스에서
     template_name = 'accountapp/update.html'
 

@@ -34,13 +34,13 @@
         <script src="{% static 'js/magicgrid.js' %}"></script>
     {% else %}
         <div class="text-center">
-            <h2>프로젝트가 없습니다.</h2>
+            <h2>갤러리가 없습니다.</h2>
         </div>
     {% endif %}
     {% include 'snippets/pagination.html' with page_obj=page_obj %}
     <div style="text-align: center">
         <a href="{% url 'projectapp:create' %}" class="btn btn-dark col-3 mt-3 mb-3">
-            프로젝트 생성
+            갤러리 생성
         </a>
     </div>
 {% endblock %}

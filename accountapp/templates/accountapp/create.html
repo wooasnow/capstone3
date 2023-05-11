@@ -21,12 +21,8 @@
                 <label for="password2">비밀번호 확인</label>
                 <input type="password" name="password2" id="password2" class="form-control" placeholder="비밀번호를 다시 입력하세요">
               </div>
-              <div class="form-group" style="margin-top:1rem">
-                <label for="email">E-mail</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="E-mail을 입력하세요">
-              </div>
               <div class="text-center">
-                <button class="btn btn-primary mx-auto" style="margin-top:2rem;">회원가입</button>
+                <button class="btn btn-primary mx-auto" style="margin-top:2rem;" >회원가입</button>
               </div>
             </form>
           </div>
@@ -41,7 +37,7 @@
       var password1 = document.getElementById("password1").value;
       var password2 = document.getElementById("password2").value;
       var password2Label = document.querySelector('label[for="password2"]');
-      var email = document.getElementById('email').value;
+
       if (username == "") {
         alert("아이디를 입력하세요");
         return false;
@@ -53,10 +49,6 @@
       if (password2 == "") {
         alert("비밀번호 확인을 입력하세요");
         return false;
-      }
-       if (email === ""){
-         alert("Email을 입력하세요");
-         return false;
       }
       if (password1 !== password2) {
         password2Label.innerHTML += ' <span style="color:red;">(입력하신 비밀번호와 다릅니다)</span>';
